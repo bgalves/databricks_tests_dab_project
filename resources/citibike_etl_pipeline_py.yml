@@ -26,6 +26,10 @@ resources:
               - "{{job.start_time.iso_datetime}}"
               - "${var.catalog}"
             source: WORKSPACE
+          # we can use also this (important this why of using libraries is not supported by serverless) for this reason we will activate the bellow solution.
+          #libraries:
+          #  - whl: ../dist/*.whl
+          # Or this but we need to have somehow somewhere on our workspace the file this this "/Workspace/Shared/wheel/dab_project-0.0.1-py3-none-any.whl"
           environment_key: install_wheels_for_02_silver_citibike
         - task_key: 03_gold_citibike_daily_ride_summary
           depends_on:

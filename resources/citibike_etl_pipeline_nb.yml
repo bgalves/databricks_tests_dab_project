@@ -3,7 +3,16 @@ resources:
     citibike_etl_pipeline_nb:
       name: citibike_etl_pipeline_nb
       tasks:
+        #- task_key: 00_whl_upload
+        #  python_wheel_task:
+        #    package_name: dba_project
+        #    entry_point: main
+        #  job_cluster_key: xpto
+        #  libraries:
+        #    - whl: ../dist/*.whl
         - task_key: 01_bronze_citibike
+          #depends_on:
+          #  - task_key: 00_whl_upload
           notebook_task:
             notebook_path: ../citibike_etl/notebooks/01_bronze/01_bronze_citibike.ipynb
             base_parameters:
@@ -25,6 +34,10 @@ resources:
               processed_timestamp: "{{job.start_time.iso_datetime}}"
               catalog: "${var.catalog}"
             source: WORKSPACE
+          # we can use also this (important this why of using libraries is not supported by serverless) for this reason we will activate the bellow solution.
+          #libraries:
+          #  - whl: ../dist/*.whl
+          # Or this but we need to have somehow somewhere on our workspace the file this this "/Workspace/Shared/wheel/dab_project-0.0.1-py3-none-any.whl"
           environment_key: install_wheels_for_02_silver_citibike
         - task_key: 03_gold_citibike_daily_ride_summary
           depends_on:

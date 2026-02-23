@@ -1,10 +1,11 @@
 import os
 import sys
 
-current_dir = os.getcwd()
-project_root = os.path.abspath(os.path.join(current_dir, "..", "..", ".."))
+# We can commnent this three lines of code because we aer now using wheels and all is setup to work with wheels and we no longuer need these lines of code.
+#current_dir = os.getcwd()
+#project_root = os.path.abspath(os.path.join(current_dir, "..", "..", ".."))
+#sys.path.append(project_root)
 
-sys.path.append(project_root)
 
 #from src.citibike.citibike_utils import get_trip_duration_mins
 #from src.utils.datetime_utils import timestamp_to_date_col
