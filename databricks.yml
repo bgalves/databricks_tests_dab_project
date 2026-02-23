@@ -11,6 +11,8 @@ include:
 variables:
   catalog:
     default: "citibike_dev"
+  dev_flag:
+    default: true
   schema:
     description: The schema to use
 
@@ -39,6 +41,8 @@ targets:
     variables:
       #catalog: dab_project
       catalog: "citibike_test"
+      dev_flag:
+        default: false
       schema: test
     permissions:
       - user_name: bgalvess@gmail.com
@@ -55,6 +59,8 @@ targets:
     variables:
       #catalog: dab_project
       catalog: "citibike_prod"
+      dev_flag:
+        default: false
       schema: prod
     permissions:
       - user_name: bgalvess@gmail.com
