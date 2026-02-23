@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    demo_job:
+      name: demo_job
+      tasks:
+        - task_key: nootbook_task_1
+          notebook_task:
+            notebook_path: ../notebooks/notebook_1.ipynb
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: PERFORMANCE_OPTIMIZED
